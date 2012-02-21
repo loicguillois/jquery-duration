@@ -24,35 +24,31 @@
       refreshMillis: 60000,
       strings: {
         milliseconds: "%d milliseconds",
-        minute: "%d seconds",
+        seconds: "%d seconds",
         minutes: "%d minutes",
         hours: "%d hours",
         days: "%d days",
         months: "%d months",
-        years: "%d years",
-        numbers: []
+        years: "%d years"
       }
     },
     inWords: function(milliseconds) {
       var $l = this.settings.strings;
-      var seconds = milliseconds / 1000;
-      var minutes = seconds / 60;
-      var hours = minutes / 60;
-      var days = hours / 24;
-      var years = days / 365;
+
+      var ms = milliseconds % 1000;
+      var seconds = Math.floor((milliseconds % (1000 * 60) - ms) / 1000);
+      var minutes = Math.floor((milliseconds % (1000 * 60 * 60) - seconds) / (1000 * 60));
+      var hours = Math.floor((milliseconds % (1000 * 60 * 60 * 24) - minutes) / (1000 * 60 * 60));
+      var days = Math.floor((milliseconds % (1000 * 60 * 60 * 24 * 365) - hours) / (1000 * 60 * 60 * 24)) % 30;
+      var month = Math.floor((milliseconds % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30));
+      var years = Math.floor(milliseconds / (1000 * 60 * 60 * 24 * 365));
 
       function substitute(stringOrFunction, number) {
         var string = $.isFunction(stringOrFunction) ? stringOrFunction(number, milliseconds) : stringOrFunction;
-        var value = ($l.numbers && $l.numbers[number]) || number;
-        return string.replace(/%d/i, value);
+	return number ? string.replace(/%d/i, number) + " " : "";
       }
 
-      return seconds < 45 && substitute($l.seconds, Math.round(seconds)) ||
-        minutes < 45 && substitute($l.minutes, Math.round(minutes)) ||
-        hours < 24 && substitute($l.hours, Math.round(hours)) ||
-        days < 30 && substitute($l.days, Math.floor(days)) ||
-        days < 365 && substitute($l.months, Math.floor(days / 30)) ||
-        substitute($l.years, Math.floor(years));
+      return substitute($l.years, years) + (substitute($l.months, month)) + (substitute($l.days, days)) + (substitute($l.hours, hours)) + (substitute($l.minutes, minutes)) + (substitute($l.seconds, seconds))  + (substitute($l.milliseconds, ms));
     },
     getDuration: function(elem) {
       // jQuery's `is()` doesn't play well with HTML5 in IE

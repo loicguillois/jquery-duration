@@ -16,11 +16,9 @@ First, load jQuery and the plugin:
 Now, let's attach it to your timestamps on DOM ready:
 
 ```html
-<pre>
-   jQuery(document).ready(function() {
+   $(document).ready(function() {
      $("abbr.duration").duration();
    });
-</pre>
 ```
 
 This will turn all abbr elements with a class of duration and a duration in the title:

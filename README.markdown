@@ -1,8 +1,8 @@
-# timeago: a jQuery plugin
+# duration: a jQuery plugin
 
-Timeago is a jQuery plugin that makes it easy to support automatically updating
-fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") from ISO 8601
-formatted dates and times embedded in your HTML (à la microformats).
+Duration is a jQuery plugin that makes it easy to convert numerical durations (milliseconds) into a sentence (e.g. "4 minutes" or "1 day").
+
+It was forked from timeago.jquery.js plugin.
 
 ## Usage
 
@@ -10,7 +10,7 @@ First, load jQuery and the plugin:
 
 ```html
 <script src="jquery.min.js" type="text/javascript"></script>
-<script src="jquery.timeago.js" type="text/javascript"></script>
+<script src="jquery.duration.js" type="text/javascript"></script>
 ```
 
 Now, let's attach it to your timestamps on DOM ready:
@@ -18,35 +18,31 @@ Now, let's attach it to your timestamps on DOM ready:
 ```html
 <pre>
    jQuery(document).ready(function() {
-     jQuery("abbr.timeago").timeago();
+     $("abbr.duration").duration();
    });
 </pre>
 ```
 
-This will turn all abbr elements with a class of timeago and an ISO 8601 timestamp in the title:
+This will turn all abbr elements with a class of duration and a duration in the title:
 
 ```html
-<abbr class="timeago" title="2008-07-17T09:24:17Z">July 17, 2008</abbr>
+<abbr class="duration" title="1000">1000</abbr>
 ```
 
 into something like this:
 
 ```html
-<abbr class="timeago" title="July 17, 2008">about 1 day ago</abbr>
+<abbr class="duration" title="1000">1 second</abbr>
 ```
 
-As time passes, the timestamps will automatically update.
-
-**For more usage and examples**: [http://timeago.yarp.com/](http://timeago.yarp.com/)
-
-**For different language configurations**: [http://gist.github.com/6251](http://gist.github.com/6251)
+**For different language configurations**: see lang folder
 
 ## Author
 
-[Ryan McGeary](http://ryan.mcgeary.org) ([@rmm5t](http://twitter.com/rmm5t))
+[Loïc Guillois](http://www.loicguillois.fr) ([@loic_guillois](http://twitter.com/loic_guillois))
 
 ## Other
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-Copyright (c) 2008-2010, Ryan McGeary (ryanonjavascript -[at]- mcgeary [*dot*] org)
+Copyright (c) 2012, Loïc Guillois (contact -[at]- loicguillois [*dot*] fr)

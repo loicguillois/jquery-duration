@@ -46,7 +46,7 @@
 	return number ? (string.replace(/%d/i, number) + (number > 1 ? "s" : "") + " ") : "";
       }
 
-      return substitute($l.years, years) + (substitute($l.months, month)) + (substitute($l.days, days)) + (substitute($l.hours, hours)) + (substitute($l.minutes, minutes)) + (substitute($l.seconds, seconds))  + (substitute($l.milliseconds, ms));
+      return $.trim(substitute($l.years, years) + (substitute($l.months, month)) + (substitute($l.days, days)) + (substitute($l.hours, hours)) + (substitute($l.minutes, minutes)) + (substitute($l.seconds, seconds))  + (substitute($l.milliseconds, ms)));
     },
     getDuration: function(elem) {
       // jQuery's `is()` doesn't play well with HTML5 in IE

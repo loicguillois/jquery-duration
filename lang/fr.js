@@ -1,10 +1,10 @@
 // French
 jQuery.duration.settings.strings = {
-   milliseconds: "%d millisecondes",
-   seconds: "%d secondes",
-   minutes: "%d minutes",
-   hours: "%d heures",
-   days: "%d jours",
+   milliseconds: "%d milliseconde",
+   seconds: "%d seconde",
+   minutes: "%d minute",
+   hours: "%d heure",
+   days: "%d jour",
    months: "%d mois",
-   years: "%d ans"
+   years: "%d an"
 };

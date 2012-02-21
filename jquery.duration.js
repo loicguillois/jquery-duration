@@ -8,8 +8,6 @@
  * @author Loïc Guillois
  * @license MIT License - http://www.opensource.org/licenses/mit-license.php
  *
- * For usage and examples, visit:
- * http://timeago.yarp.com/
  *
  * Copyright (c) 2012, Loïc Guillois (contact -[at]- loicguillois [*dot*] fr)
  */
